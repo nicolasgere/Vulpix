@@ -13,24 +13,18 @@ namespace bob
 
     public class Voiture 
     {
-        
-        
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-                
-        /*public  async void POST_Index(Req req)
-        {      
-           var form = req.form;
-           var valeur = form["test"];  
-           //var body = (MaClass) req.body;  
-           return valeur;
-        }*/
-
-        public async void Index(Req req, HttpContext res)
+        public async void Index(Req req, Res res)
         {          
-            await res.Response.WriteAsync("voitureee");
+            await res.Response.WriteAsync(req.paramsUrl["id"]);
         }
-
-        
+        public async void Form(Req req, Res res)
+        {
+            await res.Response.WriteAsync(req.form["id"]);
+        }
+        public async void Body(Req req, Res res)
+        {
+            await res.Response.WriteAsync(req.body);
+        }
     }
     
 }

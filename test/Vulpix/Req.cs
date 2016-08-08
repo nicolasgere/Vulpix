@@ -10,15 +10,12 @@ using Microsoft.Extensions.Logging;
 
 namespace bob
 {
-    public class Moto : controlleur
-    {
-        
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async Task<string> GET_Index()
-        {          
-           return "Je suis une moto";
-        }
-        
+     public class Req{
+
+        public IFormCollection form;
+        public string body;
+        public Dictionary<string, string> paramsUrl;
     }
+    
 }

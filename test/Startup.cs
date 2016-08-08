@@ -13,16 +13,17 @@ using bob;
 
 namespace test
 {
-    public class Startup : bobCore
+    public class Startup : BobCore
     {
-        
-        
 
         public Startup(){
            var voitureControlleur = new Voiture();
-           base.AddRoute("GET","/", voitureControlleur.Index);
-
-    
+           var bodyParser = new BodyParser();
+           base.Use(bodyParser.exec);
+           base.AddRoute("GET","/test/:id/test", voitureControlleur.Index);
+           base.AddRoute("POST","/form", voitureControlleur.Form);
+           base.AddRoute("POST","/body", voitureControlleur.Body);
+           
         }
     }
 }

@@ -10,14 +10,14 @@ using Microsoft.Extensions.Logging;
 
 namespace bob
 {
-    public abstract class controlleur
-    {
-        List<Action> list = new List<Action>();
-        public void subscribe(string verb, Action action)
-        {
-            list.Add(action);
+
+     public class Res{
+
+        public HttpResponse Response;
+
+        public Res(HttpContext context){
+    	    this.Response = context.Response;
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-       
     }
+    
 }

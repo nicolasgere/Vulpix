@@ -11,10 +11,12 @@ using Microsoft.Extensions.Logging;
 namespace bob
 {
 
-     public class Req{
+     public class Middleware{
+         private Action<Req,Res> action;
 
-        public IFormCollection form;
-        public string body;
+         public Middleware(Action<Req,Res> action){
+             this.action = action;
+         }
     }
     
 }
