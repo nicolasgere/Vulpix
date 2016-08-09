@@ -13,17 +13,12 @@ using bob;
 
 namespace test
 {
-    public class Startup : BobCore
+    public class Startup : Vulpix
     {
 
         public Startup(){
-           var voitureControlleur = new Voiture();
-           var bodyParser = new BodyParser();
-           base.Use(bodyParser.exec);
-           base.AddRoute("GET","/test/:id/test", voitureControlleur.Index);
-           base.AddRoute("POST","/form", voitureControlleur.Form);
-           base.AddRoute("POST","/body", voitureControlleur.Body);
-           
+           var foo = new MyController();
+           base.AddRoute("GET","/", foo.Index);
         }
     }
 }

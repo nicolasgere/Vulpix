@@ -13,12 +13,12 @@ using bob;
 
 namespace test
 {
-    public class BobCore
+    public class Vulpix
     {
-        
+
         List<Route> list = new List<Route>();
         List<Middleware> listMiddleware = new List<Middleware>();
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -39,11 +39,11 @@ namespace test
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            
+
+
             app.Run(async (context) =>
             {
-                string path = context.Request.Path; 
+                string path = context.Request.Path;
                 var arrayPath = path.Split('/');
                 var functionName = "";
                 var methodHTTP = context.Request.Method;
@@ -72,13 +72,13 @@ namespace test
                     if(context.Request.HasFormContentType){
                         var form = await context.Request.ReadFormAsync();
                         req.form = form;
-                    }    
+                    }
                      list[index].Execute(req, res);
                 }else{
                     //ERROR 404
-                } 
+                }
             });
-            
+
         }
     }
 }
