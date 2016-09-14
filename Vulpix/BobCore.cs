@@ -13,7 +13,7 @@ using bob;
 
 namespace test
 {
-    public class Vulpix
+    public class VulpixCore
     {
 
         List<Route> list = new List<Route>();
@@ -23,11 +23,11 @@ namespace test
         {
 
         }
-        public void Use(Action<Req,Res> action) {
-            listMiddleware.Add(new Middleware(action));
+        public void setRoute(List<Route> value) {
+            this.list = value;
         }
-        public void AddRoute(string methode, string url, Action<Req,Res> action) {
-            list.Add(new Route(methode,url, action));
+        public void setMiddleware(List<Middleware> value) {
+            this.listMiddleware = value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,6 @@ namespace test
                     if(!execute){
                         index++;
                     }else{
-
                     }
                 }
 
@@ -73,7 +72,7 @@ namespace test
                         var form = await context.Request.ReadFormAsync();
                         req.form = form;
                     }
-                     list[index].Execute(req, res);
+                   list[index].Execute(req, res);
                 }else{
                     //ERROR 404
                 }

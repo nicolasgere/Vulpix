@@ -11,11 +11,11 @@ using Microsoft.Extensions.Logging;
 namespace bob
 {
 
-    public class Voiture 
+    public class MyController
     {
         public async void Index(Req req, Res res)
-        {          
-            await res.Response.WriteAsync(req.paramsUrl["id"]);
+        {
+            await res.Response.WriteAsync("test voiture");
         }
         public async void Form(Req req, Res res)
         {
@@ -26,5 +26,5 @@ namespace bob
             await res.Response.WriteAsync(req.body);
         }
     }
-    
+
 }

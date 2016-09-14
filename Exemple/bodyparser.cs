@@ -13,10 +13,10 @@ using bob;
 
 namespace test
 {
-    public class BodyParser 
+    public class BodyParser
     {
         public async void exec(Req req, Res res){
-            System.Console.WriteLine("test");           
+            System.Console.WriteLine("test voila voila voila");           
         }
     }
 }
