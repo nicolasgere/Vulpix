@@ -25,7 +25,7 @@ public class MyController
 ```
 
 ## Installation
-Currently close this repository, and use the exemple helloworld project.
+Currently clone this repository, and use the exemple helloworld project.
 In future a Nugget Package will be create
 
 ## Features
