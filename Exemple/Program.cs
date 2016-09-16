@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using bob;
+using Vulpix;
 
 namespace test
 {
@@ -10,12 +10,12 @@ namespace test
     {
         public static void Main(string[] args)
         {
-            var app = new Vulpix();
+            var app = new VulpixServer();
             var foo = new MyController();
             app.AddRoute("GET","/", foo.Index);
-            app.Use(new BodyParser().exec);
-            app.listen();
-
+            app.AddRoute("GET","/voiture/:id", foo.Form);
+            app.Use(new BodyParser().Exec);
+            app.Listen();
         }
     }
 }

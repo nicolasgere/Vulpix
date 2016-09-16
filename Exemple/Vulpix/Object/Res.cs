@@ -8,9 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace bob
+namespace Vulpix
 {
-
      public class Res{
 
         public HttpResponse Response;
@@ -19,5 +18,5 @@ namespace bob
     	    this.Response = context.Response;
         }
     }
-    
+
 }

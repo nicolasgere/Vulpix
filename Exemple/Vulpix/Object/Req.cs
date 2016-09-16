@@ -8,14 +8,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace bob
+namespace Vulpix
 {
 
      public class Req{
 
         public IFormCollection form;
+        public HttpRequest context;
         public string body;
         public Dictionary<string, string> paramsUrl;
+
     }
-    
+
 }

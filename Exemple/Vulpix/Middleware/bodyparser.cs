@@ -9,14 +9,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
-using bob;
-
-namespace test
+namespace Vulpix
 {
     public class BodyParser
     {
-        public async void exec(Req req, Res res){
-            System.Console.WriteLine("test voila voila voila");           
+        public async void Exec(Req req, Res res, Middleware middle){
+            System.Console.WriteLine("1 middleware");
+            middle.Next(req,res);
         }
     }
 }

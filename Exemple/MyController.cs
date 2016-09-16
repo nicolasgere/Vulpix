@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Vulpix;
 
-namespace bob
+namespace test
 {
-
     public class MyController
     {
         public async void Index(Req req, Res res)
@@ -19,12 +19,11 @@ namespace bob
         }
         public async void Form(Req req, Res res)
         {
-            await res.Response.WriteAsync(req.form["id"]);
+            await res.Response.WriteAsync(req.paramsUrl["id"]);
         }
         public async void Body(Req req, Res res)
         {
             await res.Response.WriteAsync(req.body);
         }
     }
-
 }
