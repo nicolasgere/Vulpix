@@ -8,15 +8,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace bob
+namespace Vulpix
 {
 
      public class Middleware{
-         private Action<Req,Res> action;
-
-         public Middleware(Action<Req,Res> action){
+         private Action<Req,Res, Middleware> action;
+         public Middleware NextMiddleware;
+         public Middleware(Action<Req,Res,Middleware > action, Middleware next){
              this.action = action;
+             this.NextMiddleware = next;
+         }
+         public void Next(Req req, Res res){
+            if(this.NextMiddleware != null){
+           NextMiddleware.Execute( req, res);
+             }
+         }
+         public void Execute(Req req, Res res){
+            action(req,res,this);
          }
     }
-    
 }

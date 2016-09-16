@@ -12,6 +12,7 @@ public static void Main(string[] args)
     var app = new Vulpix();
     var foo = new MyController();
     app.AddRoute("GET","/", foo.Index);
+    app.Use(new BodyParser().Exec);
     app.listen();
 }
 public class MyController
@@ -19,6 +20,13 @@ public class MyController
     public async void Index(Req req, Res res)
     {
         await res.Response.WriteAsync("Hello World!");
+    }
+}
+public class BodyParser
+{
+    public async void Exec(Req req, Res res, Middleware middle){
+        System.Console.WriteLine("1 middleware");
+        middle.Next(req,res);
     }
 }
 

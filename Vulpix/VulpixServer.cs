@@ -11,21 +11,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 
-using test;
-
-namespace bob
+namespace Vulpix
 {
 
-  public class Vulpix {
+  public class VulpixServer {
     public Singleton config  = Singleton.GetSingleton();
 
     public void AddRoute(string methode, string url, Action<Req,Res> action) {
       config.setRoute(new Route(methode,url, action));
     }
-    public void Use(Action<Req,Res> action) {
-      config.setMiddleware(new Middleware(action));
+    public void Use(Action<Req,Res,Middleware> action) {
+      config.setMiddleware(action);
     }
-    public void listen(){
+    public void Listen(){
+      this.config.setRouter(new Router().exec);
       var config = new ConfigurationBuilder()
       .AddEnvironmentVariables(prefix: "ASPNETCORE_")
       .Build();

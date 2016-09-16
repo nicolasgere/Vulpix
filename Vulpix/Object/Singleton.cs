@@ -12,38 +12,39 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 
-using test;
-namespace bob
+namespace Vulpix
 {
 public class Singleton
 {
-  public string test = "voiture";
+
   public List<Route> list = new List<Route>();
   public List<Middleware> listMiddleware = new List<Middleware>();
+  public Middleware last;
+  public Middleware first;
   private Singleton()
   {
-    // Prevent outside instantiation
   }
 
   private static readonly Singleton _singleton = new Singleton();
 
-  public string getValue(){
-    return test;
-  }
   public List<Route> getRoute(){
     return list;
   }
-  public List<Middleware> getMiddleware(){
-    return listMiddleware;
-  }
-  public void setValue(string value){
-    this.test = value;
+  public Middleware getMiddleware(){
+    return last;
   }
   public void setRoute(Route value){
     list.Add(value);
   }
-  public void setMiddleware(Middleware value){
-    listMiddleware.Add(value);
+  public void setMiddleware(Action<Req,Res,Middleware> value){
+    var temp = new Middleware(value, this.last);
+    if(last == null){
+      first = temp;
+    }
+    last = temp;
+  }
+  public void setRouter(Action<Req,Res,Middleware> value){
+    first.NextMiddleware = new Middleware(value, null);
   }
 
   public static Singleton GetSingleton()

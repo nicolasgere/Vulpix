@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
-using bob;
 
-namespace test
+namespace Vulpix
 {
  public class ResultValidate{
      public bool valid;
@@ -20,7 +19,7 @@ namespace test
          this.valid = true;
          this.paramsUrl = new Dictionary<string, string>();
      }
- }   
+ }
  public class Route{
      private string methode;
      private string route;
@@ -35,7 +34,7 @@ namespace test
      public void Execute(Req req,Res res){
          action(req,res);
      }
-     
+
      public ResultValidate ValidateRoute(string method, string[] url){
          var i = 0;
          var y = 0;
