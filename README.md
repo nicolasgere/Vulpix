@@ -33,8 +33,7 @@ public class BodyParser
 ```
 
 ## Installation
-Currently clone this repository, and use the exemple helloworld project.
-In future a Nugget Package will be create
+A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.0
 
 ## Features
 
