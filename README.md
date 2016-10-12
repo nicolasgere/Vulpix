@@ -51,7 +51,7 @@ If you dont have [.NET core](https://www.microsoft.com/net/core#windows), please
  Add VulpixServer as dependency
 
 ```bash
-$ nugget
+$ Install-Package VulpixServer
 ```
 
   Restore dependencies
