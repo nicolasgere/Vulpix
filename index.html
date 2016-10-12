@@ -31,7 +31,7 @@
     <span class="pl-k">var</span> foo = <span class="pl-k">new</span> MyController();
     app.AddRoute(<span class="pl-s"><span class="pl-pds">"</span>GET<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span>, foo.Index);
     app.Use(<span class="pl-k">new</span> BodyParser().Exec);
-    app.listen();
+    app.Listen();
 }
 <span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyController</span>
 {
@@ -52,8 +52,7 @@
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Currently clone this repository, and use the exemple helloworld project.
-In future a Nugget Package will be create</p>
+<p>A nugget package exist, <a href="https://www.nuget.org/packages/VulpixServer/1.0.0">https://www.nuget.org/packages/VulpixServer/1.0.0</a></p>
 
 <h2>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
@@ -73,14 +72,27 @@ In future a Nugget Package will be create</p>
 
 <p>If you dont have <a href="https://www.microsoft.com/net/core#windows">.NET core</a>, please install it before.</p>
 
-<p>Clone the repo</p>
+<p>Add VulpixServer as dependency</p>
 
-<div class="highlight highlight-source-shell"><pre>$ git clone https://github.com/nicolasgere/Vulpix</pre></div>
+<div class="highlight highlight-source-shell"><pre>$ Install-Package VulpixServer</pre></div>
 
-<p>Install dependencies</p>
+<p>Restore dependencies</p>
 
 <div class="highlight highlight-source-shell"><pre>$ <span class="pl-c1">cd</span> Vulpix
 $ dotnet restore</pre></div>
+
+<p>Add simple hello world as bellow:</p>
+
+<div class="highlight highlight-source-cs"><pre>
+<span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> Main(<span class="pl-k">string</span>[] args)
+{
+    <span class="pl-k">var</span> app = <span class="pl-k">new</span> Vulpix();
+    <span class="pl-k">var</span> foo = <span class="pl-k">new</span> MyController();
+    app.AddRoute(<span class="pl-s"><span class="pl-pds">"</span>GET<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span>, (Req req, Res res)=&gt;{
+      <span class="pl-k">await</span> res.Response.WriteAsync(<span class="pl-s"><span class="pl-pds">"</span>Hello World!<span class="pl-pds">"</span></span>);
+    });
+    app.Listen();
+}</pre></div>
 
 <p>Start the server:</p>
 
