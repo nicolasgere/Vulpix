@@ -44,7 +44,12 @@ public class Singleton
     last = temp;
   }
   public void setRouter(Action<Req,Res,Middleware> value){
-    first.NextMiddleware = new Middleware(value, null);
+    if(first!= null){
+      first.NextMiddleware = new Middleware(value, null);
+    }else{
+      first = new Middleware(value, null);
+      last = first;
+    }
   }
 
   public static Singleton GetSingleton()

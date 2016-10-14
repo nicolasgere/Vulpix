@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 
+
 namespace Vulpix
 {
 
@@ -23,7 +24,7 @@ namespace Vulpix
     public void Use(Action<Req,Res,Middleware> action) {
       config.setMiddleware(action);
     }
-    public void Listen(){
+    public void Listen(int port){
       this.config.setRouter(new Router().exec);
       var config = new ConfigurationBuilder()
       .AddEnvironmentVariables(prefix: "ASPNETCORE_")
@@ -35,6 +36,7 @@ namespace Vulpix
       .UseContentRoot(Directory.GetCurrentDirectory())
       .UseIISIntegration()
       .UseStartup<Startup>()
+      .UseUrls("http://localhost:" + port.ToString())
       .Build();
 
       host.Run();

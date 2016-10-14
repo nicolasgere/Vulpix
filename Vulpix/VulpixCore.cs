@@ -39,7 +39,7 @@ namespace Vulpix
                 app.UseDeveloperExceptionPage();
             }
 
-
+            
             app.Run(async (context) =>
             {
               var res = new Res(context);
