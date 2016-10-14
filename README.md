@@ -13,7 +13,7 @@ public static void Main(string[] args)
     var foo = new MyController();
     app.AddRoute("GET","/", foo.Index);
     app.Use(new BodyParser().Exec);
-    app.listen();
+    app.Listen();
 }
 public class MyController
 {
@@ -33,8 +33,7 @@ public class BodyParser
 ```
 
 ## Installation
-Currently clone this repository, and use the exemple helloworld project.
-In future a Nugget Package will be create
+A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.0
 
 ## Features
 
@@ -49,19 +48,32 @@ In future a Nugget Package will be create
 ## Quick Start
 If you dont have [.NET core](https://www.microsoft.com/net/core#windows), please install it before.
 
- Clone the repo
+ Add VulpixServer as dependency
 
 ```bash
-$ git clone https://github.com/nicolasgere/Vulpix
+$ Install-Package VulpixServer
 ```
 
-  Install dependencies
+  Restore dependencies
 
 ```bash
 $ cd Vulpix
 $ dotnet restore
 ```
+  Add simple hello world as bellow:
 
+```c#
+
+public static void Main(string[] args)
+{
+    var app = new Vulpix();
+    var foo = new MyController();
+    app.AddRoute("GET","/", (Req req, Res res)=>{
+      await res.Response.WriteAsync("Hello World!");
+    });
+    app.Listen();
+}
+```
   Start the server:
 
 ```bash
