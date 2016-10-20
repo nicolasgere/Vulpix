@@ -13,7 +13,7 @@ public static void Main(string[] args)
     var foo = new MyController();
     app.AddRoute("GET","/", foo.Index);
     app.Use(new BodyParser().Exec);
-    app.Listen();
+    app.Listen(5000);
 }
 public class MyController
 {
@@ -25,7 +25,6 @@ public class MyController
 public class BodyParser
 {
     public async void Exec(Req req, Res res, Middleware middle){
-        System.Console.WriteLine("1 middleware");
         middle.Next(req,res);
     }
 }
@@ -33,7 +32,7 @@ public class BodyParser
 ```
 
 ## Installation
-A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.0
+A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.1
 
 ## Features
 
