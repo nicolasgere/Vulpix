@@ -23,7 +23,6 @@ namespace Vulpix
 
           var arrayPath = path.Split('/');
 
-          var functionName = "";
           var methodHTTP = req.context.Method;
           var execute = false;
           var index = 0;
@@ -39,11 +38,6 @@ namespace Vulpix
               }
           }
           if(execute){
-              if(req.context.Body.CanRead && !req.context.HasFormContentType){
-                  StreamReader reader = new StreamReader(req.context.Body);
-                  string text = reader.ReadToEnd();
-                  req.body = text;
-              }
               req.paramsUrl = resultat.paramsUrl;
               if(req.context.HasFormContentType){
                   var form = await req.context.ReadFormAsync();

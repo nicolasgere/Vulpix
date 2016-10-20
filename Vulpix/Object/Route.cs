@@ -35,11 +35,12 @@ namespace Vulpix
          action(req,res);
      }
 
-     public ResultValidate ValidateRoute(string method, string[] url){
+     public ResultValidate ValidateRoute(string methodName, string[] url){
          var i = 0;
          var y = 0;
          var result = new ResultValidate();
-         if(methode != this.methode){
+         
+         if(methodName != this.methode){
              result.valid = false;
              return result;
          }

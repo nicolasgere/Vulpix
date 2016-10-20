@@ -15,9 +15,8 @@ namespace Vulpix
 
         public IFormCollection form;
         public HttpRequest context;
-        public string body;
+        public dynamic body;
         public Dictionary<string, string> paramsUrl;
 
     }
-
 }
