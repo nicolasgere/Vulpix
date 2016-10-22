@@ -32,7 +32,7 @@ public class BodyParser
 ```
 
 ## Installation
-A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.1
+A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.2
 
 ## Features
 
