@@ -9,7 +9,7 @@ Fast, unopinionated, minimalist web framework for [.NET core](https://www.micros
 
 public static void Main(string[] args)
 {
-    var app = new Vulpix();
+    var app = new VulpixServer();
     var foo = new MyController();
     app.AddRoute("GET","/", foo.Index);
     app.Use(new BodyParser().Exec);
