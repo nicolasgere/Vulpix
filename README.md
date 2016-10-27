@@ -65,7 +65,7 @@ $ dotnet restore
 
 public static void Main(string[] args)
 {
-    var app = new Vulpix();
+    var app = new VulpixServer();
     var foo = new MyController();
     app.AddRoute("GET","/", (Req req, Res res)=>{
       await res.Response.WriteAsync("Hello World!");
