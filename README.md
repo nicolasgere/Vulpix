@@ -3,8 +3,6 @@ Vulpix
 
 Fast, unopinionated, minimalist web framework for [.NET core](https://www.microsoft.com/net/core#windows).
 
-
-
 ```c#
 
 public static void Main(string[] args)
@@ -32,7 +30,8 @@ public class BodyParser
 ```
 
 ## Installation
-A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.2
+
+We are on [NuGet](https://www.nuget.org/packages/VulpixServer/1.0.2).
 
 ## Features
 
@@ -45,9 +44,10 @@ A nugget package exist, https://www.nuget.org/packages/VulpixServer/1.0.2
   * Executable for generating applications quickly
 
 ## Quick Start
-If you dont have [.NET core](https://www.microsoft.com/net/core#windows), please install it before.
 
- Add VulpixServer as dependency
+If you don't have [.NET core](https://www.microsoft.com/net/core#windows), please install it before.
+
+ Add `VulpixServer` as dependency
 
 ```bash
 $ Install-Package VulpixServer
