@@ -1,38 +1,23 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System.Reflection;
+
 
 namespace Vulpix
 {
- public class ResultValidate{
-     public bool valid;
-     public Dictionary<string, string> paramsUrl;
-     public ResultValidate(){
-         this.valid = true;
-         this.paramsUrl = new Dictionary<string, string>();
-     }
- }
+
  public class Route{
-     private string methode;
-     private string route;
-     private string[] routeSplit;
-     private Action<Req,Res> action;
+     private string _Methode;
+     private string _RoutePath;
+     private string[] _RouteSplit;
+     private Action<Req,Res> _Action;
      public Route(string methode, string route, Action<Req,Res> action){
-         this.methode = methode;
-         this.action = action;
-         this.route = route;
-         this.routeSplit = route.Split('/');
+         this._Methode = methode;
+         this._Action = action;
+         this._RoutePath = route;
+         this._RouteSplit = route.Split('/');
      }
      public void Execute(Req req,Res res){
-         action(req,res);
+         _Action(req,res);
      }
 
      public ResultValidate ValidateRoute(string methodName, string[] url){
@@ -40,27 +25,27 @@ namespace Vulpix
          var y = 0;
          var result = new ResultValidate();
          
-         if(methodName != this.methode){
-             result.valid = false;
+         if(methodName != this._Methode){
+             result.IsValid = false;
              return result;
          }
-         while(result.valid && i != url.Count() && y !=routeSplit.Count()){
+         while(result.IsValid && i != url.Count() && y !=_RouteSplit.Count()){
              bool paramsPresent = false;
-             if(!String.IsNullOrEmpty(routeSplit[y]) && routeSplit[y][0]==':'){
+             if(!String.IsNullOrEmpty(_RouteSplit[y]) && _RouteSplit[y][0]==':'){
                  paramsPresent = true;
-                 result.paramsUrl.Add(routeSplit[y].Replace(":","") , url[i]);
+                 result.ParamsUrl.Add(_RouteSplit[y].Replace(":","") , url[i]);
              }
 
-             if(url[i] == routeSplit[y] || paramsPresent){
+             if(url[i] == _RouteSplit[y] || paramsPresent){
 
              }else{
-                 result.valid = false;
+                 result.IsValid = false;
              }
              y++;
              i++;
          }
-         if(i != url.Count() || y != routeSplit.Count()){
-             result.valid = false;
+         if(i != url.Count() || y != _RouteSplit.Count()){
+             result.IsValid = false;
          }
          return result;
      }

@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Vulpix
 {
@@ -14,9 +9,30 @@ namespace Vulpix
 
         public HttpResponse Response;
 
+
         public Res(HttpContext context){
     	    this.Response = context.Response;
         }
-    }
 
+        public async Task Send(object obj){
+                 Response.StatusCode = 200;
+                 Response.ContentType = "application/json";
+                 await Response.WriteAsync(JsonConvert.SerializeObject(obj));
+        }
+        public async Task Send(object obj, int code){
+                 Response.StatusCode = code;
+                 Response.ContentType = "application/json";
+                 await Response.WriteAsync(JsonConvert.SerializeObject(obj));
+        }
+        public async Task Send(string text){          
+                 Response.StatusCode = 200;
+                 Response.ContentType = "text/HTML";
+                 await Response.WriteAsync(text);
+        }
+        public async Task Send(string text, int code){        
+                 Response.StatusCode = code;
+                 Response.ContentType = "text/HTML";
+                 await Response.WriteAsync(text);
+        }
+    }
 }
