@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 
 
-namespace Vulpix
+namespace Vulpix.Middlewares
 {
     public class BodyParser
     {

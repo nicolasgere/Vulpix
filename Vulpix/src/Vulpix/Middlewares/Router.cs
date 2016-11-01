@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace Vulpix
+namespace Vulpix.Middlewares
 {
     public class Router
     {
