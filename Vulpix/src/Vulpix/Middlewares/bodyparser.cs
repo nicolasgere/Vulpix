@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
-
+using Vulpix.Objects;
 
 namespace Vulpix.Middlewares
 {

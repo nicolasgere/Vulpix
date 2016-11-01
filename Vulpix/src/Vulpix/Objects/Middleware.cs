@@ -1,7 +1,7 @@
 using System;
 
 
-namespace Vulpix
+namespace Vulpix.Objects
 {
 
      public class Middleware{

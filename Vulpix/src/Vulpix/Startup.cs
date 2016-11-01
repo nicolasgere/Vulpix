@@ -1,4 +1,5 @@
 using Vulpix;
+using Vulpix.Objects;
 
 public class Startup : VulpixCore
 {

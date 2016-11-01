@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Vulpix.Middlewares;
+using Vulpix.Objects;
 
 namespace Vulpix.Test
 {

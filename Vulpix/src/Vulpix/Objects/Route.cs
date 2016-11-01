@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 
 
-namespace Vulpix
+namespace Vulpix.Objects
 {
 
  public class Route{

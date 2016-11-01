@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Vulpix
+namespace Vulpix.Objects
 {
 public class VulpixConfiguration
 {
