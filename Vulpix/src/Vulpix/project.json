@@ -11,7 +11,8 @@
     "debugType": "portable"
   },
   "dependencies": {
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.1"
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0"
   },
   "frameworks": {
     "netstandard1.6": {

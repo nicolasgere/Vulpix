@@ -9,11 +9,12 @@ namespace Vulpix.Test
         {
             var app = new VulpixServer();
             var foo = new MyController();
-
+            app.Use(BodyParser.Exec);
             app.AddRoute("GET", "/", foo.Index);
-            app.Use(new BodyParser().Exec);
+
             app.Listen(5000);
         }
+
         public class MyController
         {
             public async void Index(Req req, Res res)

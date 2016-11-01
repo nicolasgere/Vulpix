@@ -15,52 +15,63 @@ namespace Vulpix
 {
     public class VulpixCore
     {
-
         private List<Route> _Routes = new List<Route>();
-        private Middleware _LastMiddleware;
-         
+        private LinkedList<Middleware> _middlewares;
+
         private String _PublicFolder;
 
         public void ConfigureServices(IServiceCollection services)
         {
 
         }
-        public void SetRoute(List<Route> value) {
+
+        public void SetRoute(List<Route> value)
+        {
             this._Routes = value;
         }
-        public void SetPublicFolder(String value) {
+
+        public void SetPublicFolder(String value)
+        {
             this._PublicFolder = value;
         }
-        public void SetMiddleware(Middleware value) {
-            this._LastMiddleware = value;
+
+        public void SetMiddlewares(LinkedList<Middleware> value)
+        {
+            this._middlewares = value;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            if(!String.IsNullOrEmpty(_PublicFolder)){
-                 app.UseStaticFiles(new StaticFileOptions(){
-                        FileProvider = new PhysicalFileProvider(
-                        Path.Combine(Directory.GetCurrentDirectory(), @""+_PublicFolder)),
-                        RequestPath = new PathString("/"+_PublicFolder)
+            if (!String.IsNullOrEmpty(_PublicFolder))
+            {
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(
+                       Path.Combine(Directory.GetCurrentDirectory(), @"" + _PublicFolder)),
+                    RequestPath = new PathString("/" + _PublicFolder)
                 });
             }
-           
+
             app.Run(async (context) =>
             {
-                await Task.Run(()=>{
+                await Task.Run(() =>
+                {
                     var res = new Res(context);
                     var req = new Req();
                     req.Context = context.Request;
-                    _LastMiddleware.Execute(req, res) ;
+                    foreach(var middleware in _middlewares)
+                    {
+                        middleware.Execute(req, res);
+                    }
                 });
-             
+
             });
 
         }

@@ -4,8 +4,8 @@ using Vulpix;
 
     public Startup(){
       var config = VulpixConfiguration.GetConfiguration();
-      base.SetRoute(config.GetRoute());
-      base.SetMiddleware(config.GetMiddleware());
-      base.SetPublicFolder(config.GetPublicFolder());
+      base.SetRoute(config._listRoute);
+      base.SetMiddlewares(config._middlewaresList);
+      base.SetPublicFolder(config._publicFolderName);
     }
   }
