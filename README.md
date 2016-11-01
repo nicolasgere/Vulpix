@@ -50,14 +50,25 @@ $ dotnet restore
 
 ```c#
 
-public static void Main(string[] args)
+public class Program
 {
-    var app = new VulpixServer();
-    var foo = new MyController();
-    app.AddRoute("GET","/", (Req req, Res res)=>{
-      await res.Response.WriteAsync("Hello World!");
-    });
-    app.Listen();
+    public static void Main(string[] args)
+    {
+        var app = new VulpixServer();
+        var foo = new MyController();
+
+        app.AddRoute("GET", "/", foo.Index);
+        app.Use(new BodyParser().Exec);
+        app.Listen(5000);
+    }
+
+    public class MyController
+    {
+        public async void Index(Req req, Res res)
+        {
+            await res.Send("Hello world!");
+        }
+    }
 }
 ```
   Start the server:

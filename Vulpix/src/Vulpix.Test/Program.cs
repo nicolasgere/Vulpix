@@ -16,15 +16,12 @@ namespace Vulpix.Test
             app.Use(new BodyParser().Exec);
             app.Listen(5000);
         }
+
         public class MyController
         {
             public async void Index(Req req, Res res)
             {
-                Console.WriteLine("GET: /");
-
-                byte[] response = Encoding.ASCII.GetBytes("Hello world!");
-
-                await res.Response.Body.WriteAsync(response, 0, response.Length);
+                await res.Send("Hello world!");
             }
         }
     }
