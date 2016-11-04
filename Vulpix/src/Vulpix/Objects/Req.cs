@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
 
-namespace Vulpix
+namespace Vulpix.Objects
 {
 
      public class Req{

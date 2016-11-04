@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 
 using Microsoft.Extensions.Configuration;
 
+using Vulpix.Middlewares;
+using Vulpix.Objects;
 
 namespace Vulpix
 {
